@@ -1,3 +1,4 @@
 {
-    "python.pythonPath": "/home/silverkip/miniconda3/envs/conbini_map/bin/python"
+    "python.pythonPath": "/home/silverkip/miniconda3/envs/conbini_map/bin/python",
+    "code-runner.executorMap": { "python": "$pythonPath -u $fullFileName"}
 }
