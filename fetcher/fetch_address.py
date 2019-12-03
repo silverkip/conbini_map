@@ -38,7 +38,7 @@ for i in range(0,len(tokyo23)):
   wardURL = baseURL + str(f'{wardCode:02}') + "/"
   with open('data/{0}-{1}.csv'.format(f'{wardCode:02}', tokyo23[i]), 'w') as csvfile:
     spamwriter = csv.writer(csvfile, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
-    spamwriter.writerow(["Name", "Address", "Location"])
+    spamwriter.writerow(["Name", "Address", "lat", "lon"])
     page = 1
     while True:
       print("Fetching page " + str(page) + " of " + tokyo23[i] + " ward ......")
@@ -55,9 +55,12 @@ for i in range(0,len(tokyo23)):
           geo = gmaps.geocode(address)[0]['geometry']['location']
         except:
           print(name, address)
-          geo = "Error"
+          geo = {
+            'lat' : 'error',
+            'lng' : 'error',
+          }
         if ('PR' in name) or ('株' in name):
           print(name, address, geo)
           continue
-        spamwriter.writerow([name, address, geo])
+        spamwriter.writerow([name, address, geo['lat'], geo['lng']])
       page += 1
