@@ -1,9 +1,9 @@
 var map;
 function initMap() {
   map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 11,
+    zoom: 14,
     center: {lat: 35.652832, lng: 139.839478},
-    mapTypeId: 'terrain'
+    mapTypeId: 'roadmap'
   });
 /*
   // Create a <script> tag and set the USGS URL as the source.
@@ -18,10 +18,21 @@ function initMap() {
 */
   map.data.loadGeoJson('static/geojson/05-bunkyo.geojson')
 
-  map.data.setStyle(function(feature) {
-    return {
-      icon: getCircle(2)
+  // make this into polygon with all of the points iterated inside later
+  map.data.setStyle(function(feature) { 
+    var geo = feature.getGeometry();
+    if(geo.getType().toLowerCase() == 'point'){
+      feature.circle = new google.maps.Circle({
+      map : map,
+      center : geo.get(),
+      radius : 400,
+      fillColor : 'green',
+      fillOpacity : 0.2,
+      strokeWeight : 0,
+      strokeColor : 'green'
+      });
     };
+    return {visible:false};
   });
 }
 
@@ -30,7 +41,7 @@ function getCircle(magnitude) {
     path: google.maps.SymbolPath.CIRCLE,
     fillColor: 'red',
     fillOpacity: .2,
-    scale: Math.pow(2, magnitude) / 2,
+    scale: 100,
     strokeColor: 'white',
     strokeWeight: .5
   };
