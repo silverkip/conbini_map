@@ -27,7 +27,7 @@ function initMap() {
     return {
       icon : {
         path : google.maps.SymbolPath.CIRCLE,
-        scale : 5,
+        scale : 2,
         fillColor : 'red',
         fillOpacity : 1,
         strokeWeight : 0,
