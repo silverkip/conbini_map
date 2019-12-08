@@ -325,53 +325,26 @@ function initMap() {
   map.data.loadGeoJson('static/geojson/01-13.geojson')
   map.data.loadGeoJson('static/geojson/15-23.geojson')
   map.data.loadGeoJson('static/geojson/14-nakano.geojson')
+  map.data.loadGeoJson('static/geojson/koto-adachi.geojson')
 
-  map.data.setStyle(function(feature) { 
+/*   map.data.setStyle(function(feature) { 
     return {
       icon : {
         path : google.maps.SymbolPath.CIRCLE,
-        scale : 4,
+        scale : 2,
         fillColor : 'red',
         fillOpacity : 0.5,
         strokeWeight : 0,
       }
     }
-  });
-//  map.data.setStyle({visible: false});
+  }); */
+  map.data.setStyle({visible: false});
 
   drawNut();
 
     // make this into polygon with all of the points iterated inside later
-/*   map.data.setStyle(function(feature) { 
-    var geo = feature.getGeometry();
-    if(geo.getType().toLowerCase() == 'point'){
-      feature.circle = new google.maps.Circle({
-      path : google.maps.SymbolPath.CIRCLE,
-      map : map,
-      center : geo.get(),
-      radius: 10,
-      fillColor : 'green',
-      fillOpacity : 1,
-      strokeWeight : 0,
-      strokeColor : 'green'
-      });
-    };
-    return {visible:false};
-  }); */
 }
 
-/* function getCircle(magnitude) {
-  return {
-    path: google.maps.SymbolPath.CIRCLE,
-    fillColor: 'red',
-    fillOpacity: .2,
-    scale: 100,
-    strokeColor: 'green',
-    strokeWeight: 10,
-    strokeOpacity : 1
-  };
-}
- */
 function drawCircle(point, radius, dir) //radius in km
 { 
     var d2r = Math.PI / 180;   // degrees to radians 
