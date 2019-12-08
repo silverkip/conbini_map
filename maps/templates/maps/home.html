@@ -15,7 +15,7 @@
     <title>Conbini Map</title>
   </head>
   <body>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjIjyA2rUsd7W_VjGcijvEzrq-wx4K4p4&callback=initMap">
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjIjyA2rUsd7W_VjGcijvEzrq-wx4K4p4&callback=initMap&language=ja&region=JP">
     </script>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark navbar-static-top">
       <a class="navbar-brand" href="#">
@@ -27,6 +27,15 @@
       <div class="jumbotron">
         <h1>Conbini Map</h1>
       </div>
+      <div class="form-control">
+        <form action="#" method="post">
+          {% csrf_token %}
+          <label for="radius">Radius(in meters) : </label>
+          <input type="text" name="radius" id="radius"/>
+          <button name="submit-radius" onclick="drawNut();">Set Radius</button>
+        </form>
+      </div>
+      <br>
     </div>
     <div id="map"></div>
   </body>
